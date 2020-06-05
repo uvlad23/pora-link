@@ -5,6 +5,13 @@ import {BsArrowRight as ArrowRight} from 'react-icons/bs'
 import Typist from 'react-typist';
 
 const MainPage = props => {
+
+    // React.useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         props.nextPage();
+    //     }, 3000)
+    // }, [])
+
     return (
         <Fade duration={2000}>
             <div className='main-page__wrapper'>
