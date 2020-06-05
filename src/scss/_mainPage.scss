@@ -1,0 +1,15 @@
+.main-page__wrapper {
+  text-align: left;
+}
+
+.main-page__offer {
+  width: 100%;
+  p {
+    min-height: 100px;
+  }
+  svg {
+    margin-bottom: -20px;
+    margin-left: 10px;
+    font-size: 64px;
+  }
+}
