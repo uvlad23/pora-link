@@ -19,7 +19,7 @@ const ToName = ({currentPage, toNextPage, nextPage, setToName, toName}) => {
             <PageTitle title={currentPage}/>
             <input type="text"
                    className='full-input'
-                   placeholder="Напишите Имя"
+                   placeholder="Кому хотим отправить?"
                    onChange={(event) => setToName(capitalize(event.target.value))}
                    value={toName}
                    onKeyDown={(e) => {

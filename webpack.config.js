@@ -65,10 +65,13 @@ module.exports = {
     },
     devServer: {
         contentBase: OUTPUT_DIR,
-        historyApiFallback: true,
+        historyApiFallback: {
+            index: 'index.html'
+        },
         hot: true,
         //is required to test in Browser stack, you should also have (127.0.0.1 bs-local.com) record in etc/hosts file
-        disableHostCheck: true
+        disableHostCheck: true,
+        port: '2323'
     },
     devtool: 'source-map'
 };

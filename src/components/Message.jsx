@@ -5,7 +5,6 @@ import NavigationArrow from "./common/NavigationArrow";
 import capitalize from 'lodash.capitalize'
 
 const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, setMessage}) => {
-    const [isReady, setReady] = useState(false);
     const
         nameWrapper = useRef(),
         messageTextEl = useRef(),
@@ -16,9 +15,6 @@ const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, s
             nameWrapper.current.style.fontSize = '48px';
             nameWrapper.current.style.paddingTop = '32px';
             nameWrapper.current.style.lineHeight = '0vh';
-            setTimeout(() => {
-                setReady(true);
-            }, base)
         }, base * 1.2);
 
         setTimeout(() => {
@@ -54,23 +50,12 @@ const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, s
                       onFocus={textToTop}
                       onBlur={textToDefault}
                       rows='1'
-                      onChange={e => setMessage(capitalize(e.target.value))}
+                      onChange={e => setMessage(e.target.value)}
                       value={message}
             ></textarea>
-            <NavigationArrow direction='right' action={toNextPage} text={nextPage}/>
+            <NavigationArrow direction='right' action={message ? toNextPage : undefined} text={nextPage}/>
         </div>
     )
 };
-
-{/*<input type="text"*/}
-{/*       className='full-input'*/}
-{/*       placeholder="Напишите Имя"*/}
-{/*       onChange={setToName}*/}
-{/*       onKeyDown={(e) => {*/}
-{/*           if(e.keyCode === 13) {*/}
-{/*               e.preventDefault();*/}
-{/*               toNextPage();*/}
-{/*           }*/}
-{/*       }}/>*/}
 
 export default Message;

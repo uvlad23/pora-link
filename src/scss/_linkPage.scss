@@ -1,0 +1,14 @@
+.link-page__wrapper {
+  opacity: 0;
+  transition: all .5s ease;
+  .container {
+    text-align: center;
+  }
+  .message-link {
+    transition: all .5s ease;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

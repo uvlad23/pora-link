@@ -3,6 +3,7 @@ import {Fade} from "react-awesome-reveal";
 import {ANIM_DURATION_BASE as base} from "constants/common";
 import PageTitle from "./common/PageTitle";
 import NavigationArrow from "./common/NavigationArrow";
+import capitalize from 'lodash.capitalize'
 
 const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prevPage, currentPage}) => {
     const wrapper = useRef();
@@ -15,20 +16,20 @@ const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prev
 
     return (
         <div className='name__wrapper' ref={wrapper}>
-            <PageTitle title={currentPage}/>
+            <PageTitle title={currentPage} secret={true}/>
             <NavigationArrow direction='left' action={toPrevPage} text={prevPage}/>
             <input type="text"
                    className='full-input'
-                   placeholder="Напишите Имя"
-                   onChange={e => setFromName(e.target.value)}
+                   placeholder="Кто отправляет?"
+                   onChange={e => setFromName(capitalize(e.target.value))}
                    value={fromName}
                    onKeyDown={(e) => {
-                       if(e.keyCode === 13) {
+                       if(e.keyCode === 13 && fromName) {
                            e.preventDefault();
                            toNextPage();
                        }
                    }}/>
-            <NavigationArrow direction='right' action={toNextPage} text={nextPage}/>
+            <NavigationArrow direction='right' action={fromName ? toNextPage : undefined} text={nextPage}/>
         </div>
     );
 };
