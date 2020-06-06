@@ -51,7 +51,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            // reducers: path.resolve(__dirname, 'src/reducers/'),
+            constants: path.resolve(__dirname, 'src/constants/'),
             // modules: path.resolve(__dirname, 'src/modules/'),
             // components: path.resolve(__dirname, 'src/components/'),
             // constants: path.resolve(__dirname, 'src/constants/'),

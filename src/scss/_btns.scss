@@ -1,0 +1,16 @@
+.btn {
+  font-family: 'Proxima Nova ExCn Lt';
+  background-color: transparent;
+  //text-transform: uppercase;
+  border-radius: 25px;
+  font-size: 32px;
+  letter-spacing: .5px;
+  padding: 5px 25px;
+  border: 3px solid #fff;
+  transition: .5s all ease;
+  outline: 0;
+  &:hover {
+    background-color: #fff;
+    color: $primary;
+  }
+}

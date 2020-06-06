@@ -1,0 +1,5 @@
+const ANIM_DURATION_BASE = 1000;
+
+export {
+    ANIM_DURATION_BASE
+}

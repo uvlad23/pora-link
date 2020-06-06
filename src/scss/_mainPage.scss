@@ -1,5 +1,8 @@
 .main-page__wrapper {
   text-align: left;
+  .container {
+    transition: all .5s ease;
+  }
 }
 
 .main-page__offer {
@@ -11,5 +14,8 @@
     margin-bottom: -20px;
     margin-left: 10px;
     font-size: 64px;
+    transition: all .5s ease;
+    position: fixed;
+    opacity: 0;
   }
 }

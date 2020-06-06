@@ -1,0 +1,9 @@
+.intro__wrapper {
+  transition: all .5s ease;
+  opacity: 0;
+  text-align: center;
+  h2,
+  button {
+    margin-top: 15px;
+  }
+}

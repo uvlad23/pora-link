@@ -19,16 +19,16 @@ const pages = [
 const propsToComponent = (Component, props) => <Component {...props}/>
 
 const Index = () => {
-    const [currentPage, setPage] = React.useState(0);
+    const [currentPage, setPage] = React.useState(2);
 
-    const nextPage = () => {
+    const toNextPage = () => {
         console.warn('next page');
         const nextIdx = currentPage + 1;
         if(nextIdx < pages.length) {
             setPage(nextIdx);
         }
     };
-    const prevPage = () => {
+    const toPrevPage = () => {
         console.warn('prev page');
         const nextIdx = currentPage - 1;
         if(nextIdx > 0) {
@@ -38,7 +38,7 @@ const Index = () => {
 
     return (
         <div className='app-wrapper'>
-            {createElement(pages[currentPage].component, {nextPage, prevPage})}
+            {createElement(pages[currentPage].component, {toNextPage, toPrevPage})}
         </div>
     )
 };
