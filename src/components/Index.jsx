@@ -19,20 +19,18 @@ const pages = [
 const propsToComponent = (Component, props) => <Component {...props}/>
 
 const Index = () => {
-    const [currentPage, setPage] = useState(2);
+    const [currentPage, setPage] = useState(1);
     const [toName, setToName] = useState('');
     const [fromName, setFromName] = useState('');
     const [message, setMessage] = useState('');
 
     const toNextPage = () => {
-        console.warn('next page');
         const nextIdx = currentPage + 1;
         if(nextIdx < pages.length) {
             setPage(nextIdx);
         }
     };
     const toPrevPage = () => {
-        console.warn('prev page');
         const nextIdx = currentPage - 1;
         if(nextIdx > 0) {
             setPage(nextIdx);

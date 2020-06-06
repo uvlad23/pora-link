@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LinkPage = props => {
-    return <h1>LinkPage</h1>;
+    return <h1>{JSON.stringify(props)}</h1>;
 };
 
 export default LinkPage;
