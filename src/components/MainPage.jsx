@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { Fade } from 'react-awesome-reveal';
-import {BsArrowRight as ArrowRight} from 'react-icons/bs'
 import {ANIM_DURATION_BASE as base} from 'constants/common'
+import {BsArrowRight as ArrowRight} from 'react-icons/bs'
 import Typist from 'react-typist';
 
 const MainPage = ({toNextPage}) => {

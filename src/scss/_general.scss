@@ -69,15 +69,53 @@ p {
 }
 
 .full-input {
+  //font-family: 'Proxima Nova Cn Bl';
   outline: 0;
   width: 100%;
   text-align: center;
   font-size: 72px;
-  padding: 0 50px;
+  padding: 0 67px;
   color: #fff;
   background: transparent;
   border: 0;
   &::placeholder {
     color: rgba(255,255,255,.25);
+  }
+}
+
+.page-title {
+  font-size: 32px;
+  border: 3px solid #fff;
+  padding: 5px 15px;
+  border-radius: 25px;
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+  }
+}
+
+.nav-arrow {
+  font-size: 52px;
+  cursor: pointer;
+  &__wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 43vh;
+    span {
+      margin-top: -5px;
+    }
+    &.right {
+      right: 15px;
+    }
+    &.left {
+      left: 15px;
+    }
+  }
+  &:hover {
+    color: rgba(255, 255, 255, .75)
   }
 }

@@ -1,0 +1,14 @@
+.message__wrapper {
+  .floating-name {
+    //font-size: 32px;
+    padding: 5px 15px;
+    &__wrapper {
+      font-size: 72px;
+      display: flex;
+      justify-content: center;
+      line-height: 75vh;
+      padding-top: 63px;
+      transition: all 1s ease;
+    }
+  }
+}
