@@ -1,3 +1,4 @@
+import 'intersection-observer';
 import React, {createElement, useState, useEffect} from 'react';
 
 import MainPage from "./MainPage";
@@ -9,6 +10,7 @@ import LinkPage from "./LinkPage";
 import ReadMessage from './ReadMessage'
 
 import {readMessage} from "../actions/api";
+import Footer from "./common/Footer";
 
 const pages = [
     {title: 'Сообщение', component: ReadMessage},
@@ -58,7 +60,7 @@ const Index = () => {
                     toPage(0, res.data.message)
                 }
             }).finally(() => {
-                //window.history.pushState('', '', '/');
+                window.history.pushState('', '', '/');
                 setReady(true)
             })
         } else {
@@ -66,23 +68,27 @@ const Index = () => {
         }
     }, []);
 
+    const getPage = () => {
+        return (
+            createElement(pages[currentPage].component,
+                {
+                    toNextPage, toPrevPage,
+                    currentPage: pages[currentPage].title,
+                    prevPage: pages[currentPage - 1] ? pages[currentPage - 1].title : '',
+                    nextPage: pages[currentPage + 1] ? pages[currentPage + 1].title : '',
+                    toName, setToName,
+                    fromName, setFromName,
+                    message, setMessage,
+                    addProps, toPage
+                })
+        )
+
+    }
+
     return (
         <div className='app-wrapper'>
-            {
-                isAppReady ? (
-                    createElement(pages[currentPage].component,
-                        {
-                            toNextPage, toPrevPage,
-                            currentPage: pages[currentPage].title,
-                            prevPage: pages[currentPage - 1] ? pages[currentPage - 1].title : '',
-                            nextPage: pages[currentPage + 1] ? pages[currentPage + 1].title : '',
-                            toName, setToName,
-                            fromName, setFromName,
-                            message, setMessage,
-                            addProps
-                        })
-                ) : null
-            }
+            { isAppReady ? getPage() : null }
+            <Footer onClick={() => {toPage(1)}}/>
         </div>
     )
 };

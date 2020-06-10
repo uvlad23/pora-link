@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const apiUrl = 'http://localhost/saythanks/api';
+const apiUrl = 'http://176.36.105.146:1337/saythanks/api';
 
 export function saveMessage(toName, fromName, message) {
     return axios({

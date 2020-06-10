@@ -17,6 +17,19 @@
 .read-message {
   opacity: 100;
   text-align: center;
+  .revert-block {
+    transition: all .5s ease;
+    opacity: 0;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    height: 100px;;
+  }
+  .nav-arrow__wrapper {
+    position: static;
+  }
   &__text {
     opacity: 0;
     height: 85vh;

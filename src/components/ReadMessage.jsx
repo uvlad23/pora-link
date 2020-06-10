@@ -1,10 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import Typist from 'react-typist';
 import {ANIM_DURATION_BASE as base} from "constants/common";
+import {GrRevert as Revert} from 'react-icons/gr';
+import { IconContext } from "react-icons";
+import NavigationArrow from "./common/NavigationArrow";
 
-const ReadMessage = ({addProps}) => {
+const ReadMessage = ({addProps, toPage}) => {
     const nameWrapper = useRef();
     const messageWrapper = useRef();
+    const revert = useRef();
 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -12,18 +16,33 @@ const ReadMessage = ({addProps}) => {
             nameWrapper.current.style.paddingTop = '32px';
             nameWrapper.current.style.lineHeight = '0vh';
             messageWrapper.current.style.opacity = 100;
-        }, base * 1.2);
+        }, base * 1.5);
 
-        return () => clearTimeout(timeout)
+        const revertTimeout = setTimeout(() => {
+            revert.current.style.opacity = 100;
+        }, base * 5);
+
+        return () => {
+            clearTimeout(timeout);
+            clearTimeout(revertTimeout);
+        }
     }, []);
+
+    const revertHandler = () => {
+        toPage(2);
+    };
 
     return (
         <div className='message__wrapper read-message'>
+            <div className="revert-block" ref={revert}>
+                <NavigationArrow direction='left' action={revertHandler} text={"Новое Сообщение"}/>
+            </div>
             <div className='floating-name__wrapper' ref={nameWrapper}>
                 <span className='floating-name'>{addProps.toName},</span>
             </div>
             <div className="read-message__text" ref={messageWrapper}>
-                <Typist cursor={{show: false}} avgTypingDelay={75}>
+                <Typist cursor={{show: false}} avgTypingDelay={100}>
+                    <Typist.Delay ms={1000} />
                     <p>{addProps.message}</p>
                     <Typist.Delay ms={100} />
                     <Typist cursor={{show: false}} avgTypingDelay={150}>

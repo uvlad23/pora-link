@@ -1,15 +1,16 @@
 import React, {useRef, useEffect} from 'react';
-import {Fade, JackInTheBox} from 'react-awesome-reveal';
+import {Fade} from 'react-awesome-reveal';
 import {ANIM_DURATION_BASE as base} from 'constants/common'
+import Footer from "./common/Footer";
 
-const Intro = ({toNextPage}) => {
+const Intro = ({toNextPage, toPage}) => {
     const wrapper = useRef();
 
     useEffect(() => {
-        wrapper.current.style.backgroundColor = 'rgba(0, 0, 0, 0.33)';
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             wrapper.current.style.opacity = 100;
         }, 200)
+        return () => clearTimeout(timeout);
     } ,[]);
 
     return (
@@ -18,7 +19,7 @@ const Intro = ({toNextPage}) => {
                 <div className="intro__offer">
                     <Fade cascade duration={base * 1}>
                         <h2>Онлайн Заметка</h2>
-                        <p>Ваше <b>сообщение</b> можно будет увидеть по <b>спец-ссылке</b></p>
+                        <p>Ваше <b>сообщение</b> можно будет увидеть по <b>специальной ссылке</b></p>
                         <button className='btn' onClick={() => {
                             wrapper.current.style.opacity = 0;
                             setTimeout(() => {

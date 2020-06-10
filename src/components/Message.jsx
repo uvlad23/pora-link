@@ -17,25 +17,31 @@ const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, s
             nameWrapper.current.style.lineHeight = '0vh';
         }, base * 1.2);
 
-        setTimeout(() => {
+        const focusTimeout = setTimeout(() => {
+            if(message.length > 0) {
+                //textToTop();
+            }
+        }, base * 2.2);
+
+        const wrapperTimeout = setTimeout(() => {
             wrapper.current.style.opacity = 100;
         }, 200);
 
-        return () => clearTimeout(nameTimeout)
+        return () => {
+            clearTimeout(nameTimeout);
+            clearTimeout(wrapperTimeout);
+            clearTimeout(focusTimeout);
+        }
     }, []);
 
 
 
     const textToTop = () => {
-        messageTextEl.current.style.marginTop = '15vh';
-        setTimeout(() => {
-            messageTextEl.current.setAttribute('rows', '5')
-        }, 500)
+        messageTextEl.current.style.paddingTop = '15vh';
     };
 
     const textToDefault = () => {
-        messageTextEl.current.style.marginTop = '35vh';
-        messageTextEl.current.setAttribute('rows', '1')
+        messageTextEl.current.style.paddingTop = '35vh';
     };
 
     return (
@@ -45,11 +51,11 @@ const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, s
             </div>
             <NavigationArrow direction='left' action={toPrevPage} text={prevPage}/>
             <textarea className='full-textarea'
-                      placeholder={'Хочу сообщить что уже пора...'}
+                      placeholder={'Хочу сообщить, что уже пора...'}
                       ref={messageTextEl}
                       onFocus={textToTop}
                       onBlur={textToDefault}
-                      rows='1'
+                      rows='5'
                       onChange={e => setMessage(e.target.value)}
                       value={message}
             ></textarea>

@@ -5,6 +5,10 @@
   }
 }
 
+.main-page__title{
+  cursor: pointer;
+}
+
 .main-page__offer {
   width: 100%;
   p {
@@ -19,3 +23,9 @@
     opacity: 0;
   }
 }
+
+//@media screen and (max-width: 375px) {
+//  .main-page__offer {
+//
+//  }
+//}

@@ -9,9 +9,10 @@ const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prev
     const wrapper = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             wrapper.current.style.opacity = 100;
         }, base * .2)
+        return () => clearTimeout(timeout);
     } ,[]);
 
     return (
@@ -20,8 +21,8 @@ const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prev
             <NavigationArrow direction='left' action={toPrevPage} text={prevPage}/>
             <input type="text"
                    className='full-input'
-                   placeholder="Кто отправляет?"
-                   onChange={e => setFromName(capitalize(e.target.value))}
+                   placeholder="Ваше имя"
+                   onChange={e => setFromName(e.target.value)}
                    value={fromName}
                    onKeyDown={(e) => {
                        if(e.keyCode === 13 && fromName) {

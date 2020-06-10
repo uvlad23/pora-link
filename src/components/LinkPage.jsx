@@ -4,27 +4,40 @@ import PageTitle from "./common/PageTitle";
 import NavigationArrow from "./common/NavigationArrow";
 import copy from 'copy-to-clipboard';
 import {saveMessage} from "../actions/api";
+import AdaptiveText from 'react-adaptive-text';
 
 const clickLinkHandler = (e) => {
     copy(e.target.innerHTML);
 };
-
+let lastSaveId;
+let savedValue;
 const LinkPage = ({currentPage, toPrevPage, prevPage, toName, fromName, message}) => {
 
     const wrapper = useRef();
-    const [generatedId, setGeneratedId] = useState();
+    const messageLink = useRef();
+    const [generatedId, setGeneratedId] = useState(savedValue);
 
     useEffect(() => {
-        saveMessage(toName ,fromName, message)
-            .then(res => {
-                console.error(res);
-                if(res && res.data && res.data.id) {
-                    const generatedId = res.data.id.split('.')[0];
-                    setGeneratedId(generatedId)
-                    wrapper.current.style.opacity = 100;
-                }
-            })
+        const saveId = toName + fromName + message;
+        if(lastSaveId !== saveId) {
+            lastSaveId = saveId;
+            saveMessage(toName ,fromName, message)
+                .then(res => {
+                    console.error(res);
+                    if(res && res.data && res.data.id) {
+                        const generatedId = res.data.id.split('.')[0];
+                        savedValue = generatedId;
+                        setGeneratedId(generatedId);
+                        wrapper.current.style.opacity = 100;
+                    }
+                })
+        } else {
+            wrapper.current.style.opacity = 100;
+        }
     } ,[]);
+
+    //messageLink.current.fontSize = `${link.length * 2}vw`;
+    const link = `${window.location.href + generatedId}/${toName}/${fromName}`;
 
     const linkPageLayout = (
         <div className='link-page__wrapper' ref={wrapper}>
@@ -33,10 +46,13 @@ const LinkPage = ({currentPage, toPrevPage, prevPage, toName, fromName, message}
             <div className="container">
                 <div className="link-page">
                     <p>Ваше персональное сообщение здесь</p>
-                    <h2 className='message-link'
-                        onClick={clickLinkHandler}>
-                        {`${window.location.href + generatedId}/${toName}/${fromName}`}
-                    </h2>
+                    <a className='message-link'
+                        ref={messageLink}
+                        target='_blank'
+                        href={link}>
+                        <AdaptiveText width='100%' text={link}/>
+                    </a>
+                    <p className='main-line'>Скопируйте ссылку и отправьте любым удобным для Вас способом</p>
                     <p>Или покиньте интернет и просто позвоните</p>
                 </div>
             </div>

@@ -50,9 +50,10 @@ p {
 }
 
 .app-wrapper {
+  position: fixed;
   background-color: $primary;
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   overflow: hidden;
 }
 
@@ -66,6 +67,24 @@ p {
   display: flex;
   & > div {
     margin-bottom: 33%;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  text-transform: uppercase;
+  border-top: 1px solid #db5b0a;
+  background-color: $primary;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f1c0a1;
+  h3 {
+    cursor: pointer;
   }
 }
 
@@ -92,11 +111,10 @@ p {
   width: 100%;
   text-align: center;
   font-size: 72px;
-  padding: 0 75px;
   color: #fff;
   background: transparent;
   border: 0;
-  margin-top: 35vh;
+  padding: 35vh 75px 0;
   transition: all .5s ease;
   &::placeholder {
     color: rgba(255,255,255,.25);
@@ -111,6 +129,11 @@ p {
   padding: 5px 15px;
   border-radius: 25px;
   &__wrapper {
+    //position: fixed;
+    //z-index: 10;
+    //width: 100vw;
+    //background: $primary;
+    //padding-bottom: 100vh;
     display: flex;
     justify-content: center;
     padding-top: 10px;
@@ -140,5 +163,41 @@ p {
   }
   &:hover {
     color: rgba(255, 255, 255, .75)
+  }
+}
+@media screen and (max-width: 1024px){
+  .nav-arrow {
+    &__wrapper {
+      &.left {
+        top: 5px;
+      }
+      &.right {
+        top: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    width: 300px;
+
+    & > div {
+      margin-bottom: 25%;
+    }
+  }
+  h2 {
+    font-size: 38px;
+  }
+  p {
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  .full-textarea,
+  .full-input {
+    font-size: 38px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

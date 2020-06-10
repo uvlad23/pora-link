@@ -1,3 +1,27 @@
+.link-page {
+  width: 80vw;
+  p {
+    font-family: 'Proxima Nova ExCn Rg', serif;
+    margin: 1vw 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #f1c0a1;
+  }
+  .main-line {
+    margin-bottom: 15px!important;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 42px;
+    line-break: anywhere;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .link-page__wrapper {
   opacity: 0;
   transition: all .5s ease;
@@ -5,10 +29,39 @@
     text-align: center;
   }
   .message-link {
+    font-family: 'Proxima Nova ExCn Lt';
     transition: all .5s ease;
     cursor: pointer;
+    white-space: nowrap;
+    & > span {
+      display: flex!important;
+      margin-bottom: 30px;
+      & > span {
+        margin: 0 auto;
+      }
+    }
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    .link-page {
+      margin-bottom: 60%;
+      width: 95vw;
+      p {
+        margin: 2.3vw;
+      }
+    }
+  }
+  .message-link {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .link-page {
   }
 }

@@ -4,23 +4,25 @@ import NavigationArrow from "./common/NavigationArrow";
 import {ANIM_DURATION_BASE as base} from 'constants/common'
 import capitalize from 'lodash.capitalize'
 
-const ToName = ({currentPage, toNextPage, nextPage, setToName, toName}) => {
+const ToName = ({currentPage, toNextPage, nextPage, setToName, toName, toPrevPage}) => {
 
     const wrapper = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             wrapper.current.style.opacity = 100;
         }, base * .2)
+        return () => clearTimeout(timeout);
     } ,[]);
 
     return (
         <div className='name__wrapper' ref={wrapper}>
+            <NavigationArrow direction='left' action={toPrevPage}/>
             <PageTitle title={currentPage}/>
             <input type="text"
                    className='full-input'
-                   placeholder="Кому хотим отправить?"
-                   onChange={(event) => setToName(capitalize(event.target.value))}
+                   placeholder="Напишите имя"
+                   onChange={(event) => setToName(event.target.value)}
                    value={toName}
                    onKeyDown={(e) => {
                        if(e.keyCode === 13 && toName) {
