@@ -1,9 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import Typist from 'react-typist';
 import {ANIM_DURATION_BASE as base} from "constants/common";
-import {GrRevert as Revert} from 'react-icons/gr';
-import { IconContext } from "react-icons";
-import NavigationArrow from "./common/NavigationArrow";
+import NavigationArrow from "../common/NavigationArrow";
 
 const ReadMessage = ({addProps, toPage}) => {
     const nameWrapper = useRef();
@@ -44,10 +42,10 @@ const ReadMessage = ({addProps, toPage}) => {
                 <Typist cursor={{show: false}} avgTypingDelay={100}>
                     <Typist.Delay ms={1000} />
                     <p>{addProps.message}</p>
-                    <Typist.Delay ms={100} />
-                    <Typist cursor={{show: false}} avgTypingDelay={150}>
-                        <h4>{addProps.fromName}.</h4>
-                    </Typist>
+                </Typist>
+                <Typist cursor={{show: false}} avgTypingDelay={150}>
+                    <Typist.Delay ms={4000} />
+                    <h4>{addProps.fromName}.</h4>
                 </Typist>
             </div>
         </div>

@@ -11,7 +11,7 @@ const clickLinkHandler = (e) => {
 };
 let lastSaveId;
 let savedValue;
-const LinkPage = ({currentPage, toPrevPage, prevPage, toName, fromName, message}) => {
+const LinkPage = ({currentPage, toPrevPage, prevPage, toName, fromName, message, toPage}) => {
 
     const wrapper = useRef();
     const messageLink = useRef();
@@ -23,14 +23,17 @@ const LinkPage = ({currentPage, toPrevPage, prevPage, toName, fromName, message}
             lastSaveId = saveId;
             saveMessage(toName ,fromName, message)
                 .then(res => {
-                    console.error(res);
                     if(res && res.data && res.data.id) {
                         const generatedId = res.data.id.split('.')[0];
                         savedValue = generatedId;
                         setGeneratedId(generatedId);
                         wrapper.current.style.opacity = 100;
+                    } else {
+                        toPage(2)
                     }
-                })
+                }).catch(() => {
+                    toPage(2)
+            })
         } else {
             wrapper.current.style.opacity = 100;
         }

@@ -3,6 +3,7 @@ import {Fade} from "react-awesome-reveal";
 import {ANIM_DURATION_BASE as base} from "constants/common";
 import NavigationArrow from "./common/NavigationArrow";
 import capitalize from 'lodash.capitalize'
+import {noSymbolsString} from "../lib/helper";
 
 const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, setMessage}) => {
     const
@@ -56,7 +57,7 @@ const Message = ({toNextPage, nextPage, toName, toPrevPage, prevPage, message, s
                       onFocus={textToTop}
                       onBlur={textToDefault}
                       rows='5'
-                      onChange={e => setMessage(e.target.value)}
+                      onChange={e => setMessage(noSymbolsString(e.target.value))}
                       value={message}
             ></textarea>
             <NavigationArrow direction='right' action={message ? toNextPage : undefined} text={nextPage}/>

@@ -7,12 +7,14 @@ import ToName from "./ToName";
 import FromName from "./FromName";
 import Message from "./Message";
 import LinkPage from "./LinkPage";
-import ReadMessage from './ReadMessage'
+import ReadMessage from './readMessage/ReadMessage'
+import MessageIntro from './readMessage/Intro';
 
 import {readMessage} from "../actions/api";
 import Footer from "./common/Footer";
 
 const pages = [
+    {title: '', component: MessageIntro},
     {title: 'Сообщение', component: ReadMessage},
     {title: 'Главная страница', component: MainPage},
     {title: 'Интро', component: Intro},
@@ -24,7 +26,7 @@ const pages = [
 
 const Index = () => {
     const
-        [currentPage, setPage] = useState(1),
+        [currentPage, setPage] = useState(2),
         [toName, setToName] = useState(''),
         [fromName, setFromName] = useState(''),
         [message, setMessage] = useState(''),
@@ -60,7 +62,6 @@ const Index = () => {
                     toPage(0, res.data.message)
                 }
             }).finally(() => {
-                window.history.pushState('', '', '/');
                 setReady(true)
             })
         } else {
@@ -83,12 +84,12 @@ const Index = () => {
                 })
         )
 
-    }
+    };
 
     return (
         <div className='app-wrapper'>
             { isAppReady ? getPage() : null }
-            <Footer onClick={() => {toPage(1)}}/>
+            <Footer onClick={() => {toPage(2)}}/>
         </div>
     )
 };

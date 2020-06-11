@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from 'react';
 import PageTitle from './common/PageTitle';
 import NavigationArrow from "./common/NavigationArrow";
 import {ANIM_DURATION_BASE as base} from 'constants/common'
-import capitalize from 'lodash.capitalize'
+import {noSymbolsString} from '../lib/helper'
 
 const ToName = ({currentPage, toNextPage, nextPage, setToName, toName, toPrevPage}) => {
 
@@ -22,7 +22,9 @@ const ToName = ({currentPage, toNextPage, nextPage, setToName, toName, toPrevPag
             <input type="text"
                    className='full-input'
                    placeholder="Напишите имя"
-                   onChange={(event) => setToName(event.target.value)}
+                   onChange={(event) => {
+                       setToName(noSymbolsString(event.target.value))
+                   }}
                    value={toName}
                    onKeyDown={(e) => {
                        if(e.keyCode === 13 && toName) {

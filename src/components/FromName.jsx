@@ -4,6 +4,7 @@ import {ANIM_DURATION_BASE as base} from "constants/common";
 import PageTitle from "./common/PageTitle";
 import NavigationArrow from "./common/NavigationArrow";
 import capitalize from 'lodash.capitalize'
+import {noSymbolsString} from "../lib/helper";
 
 const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prevPage, currentPage}) => {
     const wrapper = useRef();
@@ -22,7 +23,7 @@ const FromName = ({toNextPage, nextPage, setFromName, fromName, toPrevPage, prev
             <input type="text"
                    className='full-input'
                    placeholder="Ваше имя"
-                   onChange={e => setFromName(e.target.value)}
+                   onChange={e => setFromName(noSymbolsString(e.target.value))}
                    value={fromName}
                    onKeyDown={(e) => {
                        if(e.keyCode === 13 && fromName) {

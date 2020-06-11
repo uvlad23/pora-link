@@ -12,6 +12,7 @@ const MainPage = ({toNextPage, toPage}) => {
     let redirectTimeout;
 
     React.useEffect(() => {
+        window.history.pushState('', '', '/');
         wrapper.current.firstElementChild.style.opacity = 100;
         arrowRef.current.firstElementChild.style.position = 'fixed';
         arrowRef.current.firstElementChild.style.opacity = 100;

@@ -22,7 +22,7 @@
     opacity: 0;
     position: fixed;
     width: 100vw;
-    bottom: 0;
+    bottom: 40px;
     display: flex;
     justify-content: center;
     height: 100px;;
@@ -45,6 +45,79 @@
     p {
       width: 45vw;
       overflow-wrap: break-word;
+    }
+  }
+}
+
+.intro {
+  text-align: center;
+  display: flex;
+  height: 100%;
+  padding-bottom: 25vh;
+  p {
+    font-family: 'Proxima Nova ExCn Rg';
+    text-transform: uppercase;
+    font-size: 28px;
+  }
+  .close {
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    margin: 25px;
+  }
+
+  .close:before, .close:after {
+    position: absolute;
+    content: ' ';
+    height: 33px;
+    width: 1px;
+    background-color: #fff;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
+
+  &__first {
+    width: 50vw;
+    background: $secondary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__second {
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    align-items: center;
+    .play__message {
+      a {
+        svg {
+          width: 80px;
+        }
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .intro {
+    flex-direction: column;
+    padding-bottom: 0;
+    &__first,
+    &__second {
+      height: 50vh;
+      width: inherit;
+    }
+    .play__message {
+      padding-bottom: 5vw;
     }
   }
 }

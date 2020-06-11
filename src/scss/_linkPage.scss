@@ -1,15 +1,19 @@
 .link-page {
-  width: 80vw;
+  width: 60vw;
   p {
     font-family: 'Proxima Nova ExCn Rg', serif;
     margin: 1vw 0;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: #f1c0a1;
+    color: $dimmed;
   }
   .main-line {
-    margin-bottom: 15px!important;
+    font-size: 27px;
+    margin-bottom: 20px!important;
+    font-family: Proxima Nova ExCn Lt;
+    color: #fff;
+    text-transform: inherit;
   }
   a {
     color: #fff;
@@ -43,6 +47,11 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+@media screen and (max-width: 1024px){
+  .link-page {
+    width: 80vw;
   }
 }
 
